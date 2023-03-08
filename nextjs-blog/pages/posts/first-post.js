@@ -1,18 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Script from 'next/script';
+import Layout from '../../components/layout';
+
 
 
 const firstPost = () => {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>First Post</title>
-        <script src="https://connect.facebook.net/en_US/sdk.js" />
+        <Script
+            src="https://connect.facebook.net/en_US/sdk.js"
+            strategy="lazyOnload"
+            onLoad={console.log('script laoded correctly, window.FB has been popualated')}
+        />
       </Head>
       <h1>First Post</h1>
-      <Link href="/">Back Home</Link>
-    </div>
+      <h2>
+        <Link href="/">Back Home</Link>
+      </h2>
+    </Layout>
   )
 }
 
