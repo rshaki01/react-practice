@@ -1,4 +1,8 @@
 import Layout from '../../components/layout';
+import Head from 'next/head';
+import utilStyles from '../../styles/utils.module.css';
+
+
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
@@ -22,11 +26,11 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
     return (
       <Layout>
-        {postData.title}
+        <Head>
+          <title>{postData.title}</title>
+        </Head>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <br />
-        {postData.id}
-        <br />
-        {postData.date}
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </Layout>
     );
