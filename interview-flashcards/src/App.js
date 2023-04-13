@@ -9,10 +9,16 @@ function App() {
     'Why do you want to work for D2L?',
   ]);
 
+  const addQuestion = (newQuestion) => {
+    setQuestions([...questions, newQuestion]);
+  }
+
+  const numQuestions = questions.length;
+
   return (
     <div className="App">
-      <FlashcardForm questions={questions}/>
-      {questions[1]}
+      <FlashcardForm onAddQuestion={addQuestion}/>
+      {numQuestions}
     </div>
   );
 }
