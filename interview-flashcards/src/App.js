@@ -8,17 +8,24 @@ function App() {
     'What do you know about D2L?',
     'Why do you want to work for D2L?',
   ]);
+  const [index, setIndex] = useState(0)
 
   const addQuestion = (newQuestion) => {
     setQuestions([...questions, newQuestion]);
   }
 
-  const numQuestions = questions.length;
+
+  const handleNextQuestion = () => {
+    const numQuestions = questions.length;
+    setIndex(Math.floor(Math.random() * numQuestions));
+  }
+
 
   return (
     <div className="App">
       <FlashcardForm onAddQuestion={addQuestion}/>
-      {numQuestions}
+      <button onClick={handleNextQuestion}>Next question</button>
+      {questions[index]}
     </div>
   );
 }
